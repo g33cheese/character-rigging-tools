@@ -60,3 +60,35 @@ Run `import_skin_pack()` as a mGear Post Custom Step. The function uses the curr
 **Pipeline considerations**
 
 The skin pack path, namespace format, and database variation value have been sanitized for this portfolio example. They may need to be adapted to the conventions of a production pipeline.
+
+
+### Import ngSkinTools Layers
+
+**File:** `import_ngskin_layers.py`
+
+A Maya utility designed to run as an mGear Post Custom Step, after the control rig has been built and the mGear skin pack imported. Imports ngSkinTools layers from JSON files onto the corresponding geometry, providing the rigging artist with editable skin-weight layers for further refinement.
+
+**Features**
+
+- Derives the character asset name and variant from the Maya workspace path.
+- Locates ngSkinTools layer files using default and variant-specific filename conventions.
+- Identifies geometry under the specified RenderGeometry and VisualGeometry groups.
+- Imports ngSkinTools layers using vertex ID-based transfer and the default influence mapping configuration.
+- Logs missing geometry, missing layer files, and import failures.
+
+**Usage**
+
+Run import_ngskin_layers() as an mGear Post Custom Step, after import_skin_pack.py. The function searches the specified geometry groups and imports matching ngSkinTools layer files from the expected rig_data/ngSkin_ngSkinLayers directory.
+Once skin-weight refinement is complete, re-export the finalized mGear skin weights. If the weights have already been finalized and re-exported, this step can be skipped.
+
+**Requirements**
+
+- Autodesk Maya
+- ngSkinTools 2
+- A skinCluster on the target geometry, created by running import_skin_pack.py first
+- Corresponding geometry and ngSkinTools JSON layer files
+
+**Pipeline considerations**
+
+The geometry group names, namespace format, and skin-layer file paths have been sanitized for this portfolio example. They may need to be adapted to the conventions of a production pipeline. The production publishing process is responsible for deleting imported ngSkinTools layers.
+
