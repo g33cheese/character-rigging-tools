@@ -22,7 +22,7 @@ A Maya utility designed to run as the first mGear Pre Custom Step. The script de
 
 **Usage**
 
-Run `reference_geo()` as the first mGearPre Custom Step. By default, the function uses the current Maya workspace to determine the asset name, variant, and geometry file path. Optional arguments allow the caller to override the workspace path, asset name, and geometry file path.
+Run `reference_geo()` as the first mGear Pre Custom Step. By default, the function uses the current Maya workspace to determine the asset name, variant, and geometry file path. Optional arguments allow the caller to override the workspace path, asset name, and geometry file path.
 
 **Requirements**
 
@@ -33,3 +33,30 @@ Run `reference_geo()` as the first mGearPre Custom Step. By default, the functio
 **Pipeline considerations**
 
 The geometry path, namespace format, and database variation value have been sanitized for this portfolio example. They may need to be adapted to the conventions of a production pipeline.
+
+
+### Import mGear Skin Pack
+
+**File:** `import_skin_pack.py`
+
+A Maya utility designed to run as a Post Custom Step after the control rig has been built. The script derives the character asset name and variant from the Maya workspace folder to locate and import the corresponding mGear skin pack.
+
+**Features**
+
+- Derives the character asset name and variant from the Maya workspace path.
+- Attempts to import the default skin pack, falling back to a variant-specific skin pack if the default is unavailable.
+- Logs import status and reports missing files or import failures.
+
+**Usage**
+
+Run `import_skin_pack()` as a mGear Post Custom Step. The function uses the current Maya workspace to determine the asset name, variant, and skin pack paths.
+
+**Requirements**
+
+- Autodesk Maya
+- mGear plug-in, including mgear.core.skin
+- Access to the corresponding .gSkinPack file
+
+**Pipeline considerations**
+
+The skin pack path, namespace format, and database variation value have been sanitized for this portfolio example. They may need to be adapted to the conventions of a production pipeline.
