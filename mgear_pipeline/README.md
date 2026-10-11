@@ -92,3 +92,35 @@ Once skin-weight refinement is complete, re-export the finalized mGear skin weig
 
 The geometry group names, namespace format, and skin-layer file paths have been sanitized for this portfolio example. They may need to be adapted to the conventions of a production pipeline. The production publishing process is responsible for deleting imported ngSkinTools layers.
 
+
+### Custom Rig Setup
+
+**File:** `custom_rig_setup.py`
+
+A Maya utility designed to run as an mGear Post Custom Step after the guide template build has generated the base rig. The script adds custom rig components, control setups, and connections that extend the standard mGear build process.
+
+**Features**
+
+- Creates NPO (mGear's null node) groups, sub-controls, and gimbal controls.
+- Reconnects spine IK controls through custom sub-controls.
+- Sets up spine control scaling and UI control constraints.
+- Adds IK arm and leg length adjustment attributes.
+- Configures foot roll, finger and toe splay, and arm twist controls.
+- Adjusts arm and leg roundness attribute limits.
+- Creates and integrates hip and shoulder hydraulic driver systems.
+- Sets joint labels for overlapping joints.
+
+**Usage**
+
+Run custom_rig_setup() as an mGear Post Custom Step, after the guide template build has generated the base rig. The function performs the custom setup operations required to extend the generated character rig.
+
+**Requirements**
+
+- Autodesk Maya
+- PyMEL
+- mGear plug-in, including mgear.rigbits
+- Custom CreateVisAttrs module
+
+**Pipeline considerations**
+
+The rig node names, control names, attribute connections, and naming conventions have been sanitized for this portfolio example where applicable. The script is designed for a specific mGear character rig template and may need to be adapted to the structure and conventions of a production pipeline. It expects the relevant rig components to exist in the scene before execution.
